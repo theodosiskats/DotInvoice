@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "25J26Z1jo8lAuS+tKmSLWfIFQPHK/CAm++gRPCvzEQ6aXPjer0w45zJPw8aQWPnXFof6ofn5cIya48XVS+re6w==",
+  "dgSpecHash": "+7OuWFBVZVaRkZ3KX/0P/W/l6+gY+yD0Sh8PzRpJB28gx+i9kjrMvS1FLYJWewRU+F1vYBCgzqUNAwWc9BA/Ig==",
   "success": true,
   "projectFilePath": "A:\\DotInvoice\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\theod\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\theod\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\theod\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\theod\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.4\\microsoft.aspnetcore.authentication.jwtbearer.7.0.4.nupkg.sha512",
     "C:\\Users\\theod\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.4\\microsoft.aspnetcore.cryptography.internal.7.0.4.nupkg.sha512",

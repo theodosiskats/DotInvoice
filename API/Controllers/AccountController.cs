@@ -1,5 +1,7 @@
 ﻿using API.Data;
+using API.DTOs;
 using API.Entities;
+using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,88 +11,70 @@ namespace API.Controllers;
 
 public class AccountController : BaseApiController
 {
-    private readonly DataContext _context;
+    private readonly UserManager<AppUser> _userManager;
+    private readonly ITokenService _tokenService;
+    private readonly IMapper _mapper;
 
-    public AccountController(DataContext context)
+    public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, IMapper mapper)
     {
-        _context = context;
+        _userManager = userManager;
+        _tokenService = tokenService;
+        _mapper = mapper;
     }
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
     {
-        return await _context.Users.ToListAsync();
+        return await _userManager.Users.ToListAsync();
     }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<AppUser>> GetUser(int id)
+    [HttpPost("register")] // POST: api/accounts/register?username=dave&password=pwd
+    public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
     {
-        var user = await _context.Users.FindAsync(id);
+        if (await UserExists(registerDto.Username)) return BadRequest("Username is taken");
 
-        if (user == null)
+        var user = _mapper.Map<AppUser>(registerDto);
+
+        user.UserName = registerDto.Username.ToLower();
+
+        var result = await _userManager.CreateAsync(user, registerDto.Password);
+        
+        if (!result.Succeeded) return BadRequest(result.Errors);
+        
+        var roleResult = await _userManager.AddToRoleAsync(user, "Member");
+        
+        if (!roleResult.Succeeded) return BadRequest(result.Errors);
+
+        return new UserDto
         {
-            return NotFound();
-        }
-
-        return user;
+            Username = user.UserName,
+            Token = await _tokenService.CreateToken(user),
+        };
     }
 
-    [HttpPost("register")]
-    public async Task<ActionResult<AppUser>> CreateUser(AppUser user)
+    [HttpPost("login")] // POST: api/accounts/login
+    public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
     {
-        _context.Users.Add(user);
-        await _context.SaveChangesAsync();
+        var user = await _userManager.Users
+            .SingleOrDefaultAsync(x => x.UserName == loginDto.Username);
 
-        return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
+        if (user == null) return Unauthorized("Invalid username");
+
+        var result = await _userManager.CheckPasswordAsync(user, loginDto.Password);
+        
+        if (!result) return Unauthorized("Invalid password");
+        
+        
+
+        return new UserDto
+        {
+            Username = user.UserName,
+            Token = await _tokenService.CreateToken(user),
+        };
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateUser(int id, AppUser user)
+    private async Task<bool> UserExists(string username)
     {
-        if (id != user.Id)
-        {
-            return BadRequest();
-        }
-
-        _context.Entry(user).State = EntityState.Modified;
-
-        try
-        {
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!UserExists(id))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
-        }
-
-        return NoContent();
-    }
-
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteUser(int id)
-    {
-        var user = await _context.Users.FindAsync(id);
-
-        if (user == null)
-        {
-            return NotFound();
-        }
-
-        _context.Users.Remove(user);
-        await _context.SaveChangesAsync();
-
-        return NoContent();
-    }
-
-    private bool UserExists(int id)
-    {
-        return _context.Users.Any(e => e.Id == id);
+        return await _userManager.Users.AnyAsync(x => x.UserName == username.ToLower());
     }
 }
