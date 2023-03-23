@@ -1,0 +1,36 @@
+<div class="container">hehehe
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-10 mx-auto">
+      <img class="mb-4 text-center" src="./assets/logos/DotInvoiceLogo.png" alt="DotInvoice" width="100%">
+      <h1 class="h3 mb-3 fw-normal" style="text-align: center">Sign in</h1>
+
+      <form #loginForm="ngForm" class="row" (ngSubmit)="login()">
+        <div class="form-floating mb-2">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="enter your username"
+            [(ngModel)]="model.username"
+            name="username"
+          >
+          <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="enter your password"
+            [(ngModel)]="model.password"
+            name="password"
+          >
+          <label for="floatingPassword">Password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+      </form>
+
+      <p class="mt-5 mb-3 text-muted text-center">DotInvoice | Theodosis Katsoulis © 2023</p>
+    </div>
+  </div>
+</div>
