@@ -9,18 +9,18 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import {SidebarComponent} from "./layout/sidebar/sidebar.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    SidebarComponent,
     HeaderComponent,
     FooterComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
