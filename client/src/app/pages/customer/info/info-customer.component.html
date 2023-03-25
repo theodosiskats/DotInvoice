@@ -1,0 +1,143 @@
+<div class="container d-flex">
+  <div class="col-4">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Customer Name</h5>
+        <p class="card-text">State, Country, Zip Code</p>
+        <div class="btn-group d-flex">
+          <button class="btn btn-warning" (click)="selectTab('Orders')">Orders</button>
+          <button class="btn btn-primary" (click)="selectTab('Invoices')">Invoices</button>
+        </div>
+        <div class="btn-group d-flex mt-4">
+          <button type="submit" class="btn btn-secondary" (click)="triggerEdit()">Edit Customer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-10">
+    <tabset [justified]="true" #customerTabs>
+      <tab heading="Details" (selectTab)="onTabActivated($event)">
+        <form class="row g-3 mt-3">
+          <div class="col-md-6">
+            <label for="Company Name" class="form-label">Company Name</label>
+            <input [disabled]="!canEdit" type="text" class="form-control" id="Company Name" value="">
+          </div>
+          <div class="col-md-6">
+            <label for="taxID" class="form-label">TaxID</label>
+            <input [disabled]="!canEdit" type="text" class="form-control" id="taxID" value="">
+          </div>
+          <div class="col-md-6">
+            <label for="contactPerson" class="form-label">Contact Person</label>
+            <input [disabled]="!canEdit" type="text" class="form-control" id="contactPerson">
+          </div>
+          <div class="col-md-6">
+            <label for="landline" class="form-label">Landline</label>
+            <input [disabled]="!canEdit" type="tel" class="form-control" id="landline" placeholder="+30-12345-67890">
+          </div>
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input [disabled]="!canEdit" type="email" class="form-control" id="email" placeholder="Apartment, studio, or floor">
+          </div>
+          <div class="col-md-6">
+            <label for="mobile" class="form-label">Mobile</label>
+            <input [disabled]="!canEdit" type="tel" class="form-control" id="mobile" placeholder="Apartment, studio, or floor">
+          </div>
+          <div class="col-12">
+            <label for="address" class="form-label">Address</label>
+            <input [disabled]="!canEdit" type="text" class="form-control" id="address" placeholder="Apartment, studio, or floor">
+          </div>
+          <div class="col-md-3">
+            <label for="city" class="form-label">City</label>
+            <input [disabled]="!canEdit" type="text" class="form-control" id="city">
+          </div>
+          <div class="col-md-3">
+            <label for="state" class="form-label">State</label>
+            <input [disabled]="!canEdit" type="text" class="form-control" id="state">
+          </div>
+          <div class="col-md-4">
+            <label for="country" class="form-label">Country</label>
+            <select [disabled]="!canEdit" id="country" class="form-select">
+              <option selected hidden>Choose...</option>
+              <option *ngFor="let country of countries" value="{{country}}">{{country}}</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label for="zip" class="form-label">Zip</label>
+            <input [disabled]="!canEdit" type="text" class="form-control" id="zip">
+          </div>
+          <div class="input-group">
+            <span class="input-group-text">Comments</span>
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+          </div>
+          <div *ngIf="canEdit">
+            <hr>
+            <button class="btn btn-success mb-5" style="width: 6rem;">Save</button>
+          </div>
+        </form>
+      </tab>
+
+      <tab heading="Invoices" (selectTab)="onTabActivated($event)">
+        <table class="table mt-3 text-center align-middle table-bordered">
+          <thead>
+          <tr>
+            <th scope="col" style="width: 5%;">A/O #</th>
+            <th scope="col" style="width: 5%">Invoice #</th>
+            <th scope="col" style="width: 30%">Date Issued</th>
+            <th scope="col" style="width: 30%">Issued by</th>
+            <th scope="col" style="width: 30%">Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr routerLink="/">
+            <th scope="row">1</th>
+            <td>83#</td>
+            <td>10/02/2023</td>
+            <td>Theodosis</td>
+            <td>Unpaid</td>
+          </tr>
+          <tr routerLink="/login">
+            <th scope="row">1</th>
+            <td>83#</td>
+            <td>10/02/2023</td>
+            <td>Theodosis</td>
+            <td>Unpaid</td>
+          </tr>
+          </tbody>
+        </table>
+      </tab>
+
+      <tab heading="Orders" (selectTab)="onTabActivated($event)">
+        <table class="table mt-3 text-center align-middle table-bordered">
+          <thead>
+          <tr>
+            <th scope="col" style="width: 5%;">A/O #</th>
+            <th scope="col" style="width: 5%">Invoice #</th>
+            <th scope="col" style="width: 30%">Date Issued</th>
+            <th scope="col" style="width: 30%">Issued by</th>
+            <th scope="col" style="width: 30%">Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr routerLink="/order/:id">
+            <th scope="row">1</th>
+            <td>83#</td>
+            <td>10/02/2023</td>
+            <td>Theodosis</td>
+            <td>Unpaid</td>
+          </tr>
+          <tr routerLink="/order/:id">
+            <th scope="row">1</th>
+            <td>83#</td>
+            <td>10/02/2023</td>
+            <td>Theodosis</td>
+            <td>Unpaid</td>
+          </tr>
+          </tbody>
+        </table>
+      </tab>
+    </tabset>
+
+
+  </div>
+</div>

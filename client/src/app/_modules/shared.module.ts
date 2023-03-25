@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ToastrModule} from "ngx-toastr";
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
-import { SidebarModule } from 'primeng/sidebar';
-import { ButtonModule } from 'primeng/button';
+import {TabsModule} from "ngx-bootstrap/tabs";
 
 @NgModule({
   declarations: [],
@@ -21,14 +20,12 @@ import { ButtonModule } from 'primeng/button';
       includeTitleDuplicates: true,
     }),
     BsDropdownModule.forRoot(),
-    SidebarModule,
-    ButtonModule
+    TabsModule.forRoot(),
   ],
   exports: [
-    ToastrModule,
     BsDropdownModule,
-    SidebarModule,
-    ButtonModule
+    ToastrModule,
+    TabsModule
   ]
 })
 export class SharedModule { }

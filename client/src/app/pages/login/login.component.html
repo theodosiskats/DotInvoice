@@ -1,5 +1,4 @@
-<div class="container">hehehe
-  <div class="row">
+<div class="container">
     <div class="col-lg-4 col-md-6 col-sm-10 mx-auto">
       <img class="mb-4 text-center" src="./assets/logos/DotInvoiceLogo.png" alt="DotInvoice" width="100%">
       <h1 class="h3 mb-3 fw-normal" style="text-align: center">Sign in</h1>
@@ -14,7 +13,7 @@
             [(ngModel)]="model.username"
             name="username"
           >
-          <label for="floatingInput">Username</label>
+          <label for="floatingInput" class="ms-1">Username</label>
         </div>
         <div class="form-floating mb-3">
           <input
@@ -25,12 +24,11 @@
             [(ngModel)]="model.password"
             name="password"
           >
-          <label for="floatingPassword">Password</label>
+          <label for="floatingPassword" class="ms-1">Password</label>
+        <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Sign in</button>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
       </form>
 
       <p class="mt-5 mb-3 text-muted text-center">DotInvoice | Theodosis Katsoulis © 2023</p>
     </div>
   </div>
-</div>

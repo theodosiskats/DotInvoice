@@ -1,0 +1,9 @@
+a {
+  cursor: pointer;
+}
+
+img {
+  max-height: 45px;
+  border: 1px solid #404040;
+  display: inline;
+}

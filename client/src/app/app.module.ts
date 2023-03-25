@@ -7,11 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SharedModule} from "./_modules/shared.module";
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { HeaderComponent } from './layout/header/header.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import {SidebarComponent} from "./layout/sidebar/sidebar.component";
+import { InfoCustomerComponent } from './pages/customer/info/info-customer.component';
+import { IndexCustomerComponent } from './pages/customer/index/index-customer.component';
+import {NewCustomerComponent} from "./pages/customer/new/new-customer.component";
 
 @NgModule({
   declarations: [
@@ -19,8 +20,9 @@ import {SidebarComponent} from "./layout/sidebar/sidebar.component";
     HomeComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent,
-    SidebarComponent,
+    InfoCustomerComponent,
+    IndexCustomerComponent,
+    NewCustomerComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import {SidebarComponent} from "./layout/sidebar/sidebar.component";
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
