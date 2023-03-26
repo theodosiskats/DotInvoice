@@ -1,1 +1,18 @@
-<p>index works!</p>
+<table class="table mt-3 text-center align-middle table-bordered">
+  <thead>
+  <tr>
+    <th scope="col" style="width: 6%;">A/O ID#</th>
+    <th scope="col" style="width: 40%">Company Name</th>
+    <th scope="col" style="width: 34%">Email</th>
+    <th scope="col" style="width: 20%">Country</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr routerLink="/customer/{{customer.id}}" *ngFor="let customer of customers">
+    <th scope="row">{{customer.id}}</th>
+    <td>{{customer.companyName}}</td>
+    <td>{{customer.email}}</td>
+    <td>{{customer.country}}</td>
+  </tr>
+  </tbody>
+</table>

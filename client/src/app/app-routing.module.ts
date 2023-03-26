@@ -9,9 +9,9 @@ import {NewCustomerComponent} from "./pages/customer/new/new-customer.component"
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'customer/', component: IndexCustomerComponent},
+  {path: 'customer', component: IndexCustomerComponent},
   {path: 'customer/new', component: NewCustomerComponent},
-  {path: 'customer/info/', component: InfoCustomerComponent},
+  {path: 'customer/:id', component: InfoCustomerComponent},
 ];
 
 @NgModule({

@@ -1,54 +1,73 @@
-<form class="row g-3 mt-3">
+<h1>hello</h1>
+
+<form class="row g-3 mt-3" [formGroup]="newCustomerForm" id="newCustomerForm" (ngSubmit)="createCustomer()">
+
   <div class="col-md-6">
     <label for="Company Name" class="form-label">Company Name</label>
-    <input type="text" class="form-control" id="Company Name" value="">
+    <input name="companyName" formControlName="companyName" type="text" class="form-control" id="Company Name" placeholder="Legal company name">
   </div>
+
   <div class="col-md-6">
     <label for="taxID" class="form-label">TaxID</label>
-    <input type="text" class="form-control" id="taxID" value="">
+    <input name="taxID" formControlName="taxId" type="text" class="form-control" id="taxID" placeholder="DE123456789 or equivalent if required">
   </div>
+
   <div class="col-md-6">
     <label for="contactPerson" class="form-label">Contact Person</label>
-    <input type="text" class="form-control" id="contactPerson">
+    <input name="contactPerson" formControlName="contactPerson" type="text" class="form-control" id="contactPerson" placeholder="John Doe">
   </div>
+
   <div class="col-md-6">
-    <label for="landline" class="form-label">Landline</label>
-    <input type="tel" class="form-control" id="landline" placeholder="+30-12345-67890">
+    <label for="telephone" class="form-label">Landline</label>
+    <input name="telephone" formControlName="telephone" type="tel" class="form-control" id="telephone" placeholder="+30-12345-67890">
   </div>
+
   <div class="col-md-6">
     <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email" placeholder="Apartment, studio, or floor">
+    <input name="email" formControlName="email" type="email" class="form-control" id="email" placeholder="info@example.com">
   </div>
+
   <div class="col-md-6">
     <label for="mobile" class="form-label">Mobile</label>
-    <input type="tel" class="form-control" id="mobile" placeholder="Apartment, studio, or floor">
+    <input name="mobile" formControlName="mobile" type="tel" class="form-control" id="mobile" placeholder="+30-12345-67890">
   </div>
+
   <div class="col-12">
     <label for="address" class="form-label">Address</label>
-    <input type="text" class="form-control" id="address" placeholder="Apartment, studio, or floor">
+    <input name="address" formControlName="address" type="text" class="form-control" id="address" placeholder="Apartment, studio, or floor">
   </div>
+
   <div class="col-md-3">
     <label for="city" class="form-label">City</label>
-    <input type="text" class="form-control" id="city">
+    <input name="city" formControlName="city" type="text" class="form-control" id="city">
   </div>
+
   <div class="col-md-3">
     <label for="state" class="form-label">State</label>
-    <input type="text" class="form-control" id="state">
+    <input name="state" formControlName="state" type="text" class="form-control" id="state">
   </div>
+
   <div class="col-md-4">
     <label for="country" class="form-label">Country</label>
-    <select id="country" class="form-select">
+    <select name="country" formControlName="country" id="country" class="form-select">
       <option selected hidden>Choose...</option>
-      <option *ngFor="let country of countries" value="{{country}}">{{country}}</option>
+      <option *ngFor="let country of countries" [value]="country">{{country}}</option>
     </select>
   </div>
+
   <div class="col-md-2">
     <label for="zip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="zip">
+    <input name="zip" formControlName="zip" type="text" class="form-control" id="zip">
   </div>
+
+  <div class="col-12">
+    <label for="shippingAddress" class="form-label">Shipping Address</label>
+    <input name="shippingAddress" formControlName="shippingAddress" type="text" class="form-control" id="shippingAddress" placeholder="123 Main Street, Building 4A, Downtown, USA, NY 12345">
+  </div>
+
   <div class="input-group">
     <span class="input-group-text">Comments</span>
-    <textarea class="form-control" aria-label="With textarea"></textarea>
+    <textarea name="comments" formControlName="comments" class="form-control" aria-label="With textarea"></textarea>
   </div>
   <div>
     <hr>

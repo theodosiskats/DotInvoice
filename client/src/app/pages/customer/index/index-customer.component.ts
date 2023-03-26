@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Customer} from "../../../_models/customer";
+import {CustomerService} from "../../../_services/customer.service";
 
 @Component({
   selector: 'app-index-customer',
@@ -6,5 +8,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./index-customer.component.css']
 })
 export class IndexCustomerComponent {
+  customers: Customer[] = []
 
+  constructor(private customerService: CustomerService) {
+  }
+
+  ngOnInit(): void {
+    this.loadCustomers()
+  }
+
+  loadCustomers() {
+    this.customerService.getAllCustomers().subscribe({
+      next: response => {
+        this.customers = response
+        console.log(this.customers)
+      },
+      error: error => {
+        console.error('Error fetching customers:', error)
+      }
+    });
+  }
 }

@@ -7,7 +7,25 @@ namespace API.Data
 {
     public class Seed
     {
-        
+        public static async Task SeedCustomers(DataContext context)
+        {
+            if (await context.Customers.AnyAsync()) return;
+            
+            var customerData = await File.ReadAllTextAsync("Data/CustomerSeedData.json");
+            
+            var options = new JsonSerializerOptions{PropertyNameCaseInsensitive = true};
+            
+            var customers = JsonSerializer.Deserialize<List<Customer>>(customerData);
+
+            foreach (var customer in customers)
+            {
+                await context.Customers.AddAsync(customer);
+            }
+
+            await context.SaveChangesAsync();
+        }
+
+
         public static async Task SeedUsers(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
         {
             if (await userManager.Users.AnyAsync()) return;

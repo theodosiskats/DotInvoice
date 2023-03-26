@@ -1,6 +1,8 @@
-﻿namespace API.Entities;
+﻿using API.Entities;
 
-public class Customer
+namespace API.DTOs;
+
+public class CustomerDto
 {
     public int Id { get; set; }
     public string CompanyName { get; set; }
@@ -16,7 +18,4 @@ public class Customer
     public string ShippingAddress { get; set; }
     public string TaxId { get; set; }
     public string Comments { get; set; }
-
-    public List<Invoice> Invoices { get; set; } = new List<Invoice>();
-    public List<Order> Orders { get; set; } = new List<Order>();
 }
