@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {env} from "../../environments/environment";
 import {Customer} from "../_models/customer";
-import {tap} from "rxjs";
+import {NewCustomer} from "../_models/newCustomer";
 import {Router} from "@angular/router";
+import {map} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,9 @@ export class CustomerService {
 
   createCustomer(newCustomer: Customer) {
     return this.httpClient.post<Customer>(this.baseUrl + 'customer/new', newCustomer)
+  }
+
+  updateCustomer(updatedCustomer: Customer) {
+    return this.httpClient.put<Customer>(this.baseUrl + 'customer/' + updatedCustomer.id, updatedCustomer)
   }
 }

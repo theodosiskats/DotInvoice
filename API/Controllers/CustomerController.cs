@@ -57,4 +57,18 @@ public class CustomerController : BaseApiController
 
         return Ok(result);
     }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdateCustomer(CustomerDto customerDto, int id)
+    {
+        var customer = await _context.Customers.FindAsync(id);
+        
+        if (customer is null) return NotFound();
+
+        _mapper.Map(customerDto, customer);
+        
+        if (await _context.SaveChangesAsync() > 0) return NoContent();
+        if (await _context.SaveChangesAsync() == 0) return BadRequest("You haven't made any changes to the customer");
+        return BadRequest("Failed to update the customer");
+    }
 }

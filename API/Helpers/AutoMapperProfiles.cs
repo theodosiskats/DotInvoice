@@ -12,7 +12,8 @@ public class AutoMapperProfiles : Profile
     {
         CreateMap<AppUser, MemberDto>();
         CreateMap<RegisterDto, AppUser>();
-        CreateMap<CustomerDto, Customer>();
+        CreateMap<CustomerDto, Customer>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore());
         CreateMap<Customer, CustomerDto>();
         
         CreateMap<DateTime, DateTime>().ConvertUsing(d => DateTime.SpecifyKind(d, DateTimeKind.Utc));
