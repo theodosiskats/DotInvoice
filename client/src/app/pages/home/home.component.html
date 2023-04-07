@@ -5,11 +5,16 @@
         <div class="card-body p-0">
           <div class="row g-0">
             <div class="col-sm-6 col-lg-3">
-              <div class="card rounded-0 shadow-none m-0">
+              <div class="card rounded-0 shadow-none m-0 border-start border-light">
+                <div class="card-body text-center">
+                  <i class="ri-briefcase-line text-muted font-24"></i>
+                  <h3><span>132</span></h3>
+                  <p class="text-muted font-15 mb-0">Total Customers</p>
+                </div>
                 <div class="card-body text-center">
                   <i class="ri-briefcase-line text-muted font-24"></i>
                   <h3><span>29</span></h3>
-                  <p class="text-muted font-15 mb-0">Total Projects</p>
+                  <p class="text-muted font-15 mb-0">Have Order</p>
                 </div>
               </div>
             </div>
@@ -18,8 +23,13 @@
               <div class="card rounded-0 shadow-none m-0 border-start border-light">
                 <div class="card-body text-center">
                   <i class="ri-list-check-2 text-muted font-24"></i>
-                  <h3><span>715</span></h3>
-                  <p class="text-muted font-15 mb-0">Total Tasks</p>
+                  <h3><span>1513</span></h3>
+                  <p class="text-muted font-15 mb-0">Total Invoices</p>
+                </div>
+                <div class="card-body text-center">
+                  <i class="ri-list-check-2 text-muted font-24"></i>
+                  <h3><span>715.324,32 €</span></h3>
+                  <p class="text-muted font-15 mb-0">Gross Sales</p>
                 </div>
               </div>
             </div>
@@ -29,7 +39,12 @@
                 <div class="card-body text-center">
                   <i class="ri-group-line text-muted font-24"></i>
                   <h3><span>31</span></h3>
-                  <p class="text-muted font-15 mb-0">Members</p>
+                  <p class="text-muted font-15 mb-0">Open Invoices</p>
+                </div>
+                <div class="card-body text-center">
+                  <i class="ri-group-line text-muted font-24"></i>
+                  <h3><span>7.584,16 €</span></h3>
+                  <p class="text-muted font-15 mb-0">Total Gross Worth</p>
                 </div>
               </div>
             </div>
@@ -38,8 +53,13 @@
               <div class="card rounded-0 shadow-none m-0 border-start border-light">
                 <div class="card-body text-center">
                   <i class="ri-line-chart-line text-muted font-24"></i>
-                  <h3><span>93%</span> <i class="mdi mdi-arrow-up text-success"></i></h3>
-                  <p class="text-muted font-15 mb-0">Productivity</p>
+                  <h3><span>16</span> <i class="mdi mdi-arrow-up text-success"></i></h3>
+                  <p class="text-muted font-15 mb-0">Open Orders</p>
+                </div>
+                <div class="card-body text-center">
+                  <i class="ri-line-chart-line text-muted font-24"></i>
+                  <h3><span>3.884,12 €</span> <i class="mdi mdi-arrow-up text-success"></i></h3>
+                  <p class="text-muted font-15 mb-0">Total Net Worth</p>
                 </div>
               </div>
             </div>
@@ -55,20 +75,19 @@
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
       <h4 class="header-title">Tasks</h4>
-      <div class="dropdown">
-        <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="mdi mdi-dots-vertical"></i>
+      <div class="btn-group ms-3" dropdown>
+        <a class="nav-link dropdown-toggle" dropdownToggle role="button" aria-controls="dropdown-account">
+          User
         </a>
-        <div class="dropdown-menu dropdown-menu-end">
-          <!-- item-->
-          <a href="javascript:void(0);" class="dropdown-item">Weekly Report</a>
-          <!-- item-->
-          <a href="javascript:void(0);" class="dropdown-item">Monthly Report</a>
-          <!-- item-->
-          <a href="javascript:void(0);" class="dropdown-item">Action</a>
-          <!-- item-->
-          <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-        </div>
+        <ul id="dropdown-account" *dropdownMenu class="dropdown-menu dropdown-menu-right mt-4"
+            role="menu" aria-labelledby="button-basic" data-bs-popper="end">
+          <li role="menuitem"><a class="dropdown-item" href="#">Weekly Report</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Monthly Report</a></li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Review</a></li>
+        </ul>
+
+
       </div>
     </div>
     <div class="card-header bg-light-lighten border-top border-bottom border-light py-1 text-center">
