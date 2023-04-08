@@ -1,1 +1,11 @@
-<app-datatable [data]="customers"></app-datatable>
+<app-datatable
+  [data]="customers"
+  [key1]="'id'"
+  [keyDisplay1]="'A/O ID#'"
+  [key2]="'companyName'"
+  [keyDisplay2]="'Company Name'"
+  [key3]="'email'"
+  [keyDisplay3]="'Email'"
+  [key4]="'country'"
+  [keyDisplay4]="'Country'"
+></app-datatable>

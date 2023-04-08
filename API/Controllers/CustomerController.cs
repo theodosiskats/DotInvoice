@@ -68,7 +68,7 @@ public class CustomerController : BaseApiController
         _mapper.Map(customerDto, customer);
         
         if (await _context.SaveChangesAsync() > 0) return NoContent();
-        if (await _context.SaveChangesAsync() == 0) return BadRequest("You haven't made any changes to the customer");
-        return BadRequest("Failed to update the customer");
+        
+        return BadRequest(await _context.SaveChangesAsync() == 0 ? "You haven't made any changes to the customer" : "Failed to update the customer");
     }
 }

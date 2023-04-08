@@ -5,38 +5,52 @@
 >
   <ng-template pTemplate="header">
     <tr>
-      <th style="width:15rem">
+      <th *ngIf="key1">
         <div class="flex align-items-center">
-          A/O ID#
+          {{keyDisplay1}}
           <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
         </div>
       </th>
-      <th style="width:40rem">
+      <th *ngIf="key2">
         <div class="flex align-items-center">
-          Company Name
+          {{keyDisplay2}}
           <p-columnFilter type="text" field="companyName" display="menu"></p-columnFilter>
         </div>
       </th>
-      <th style="width:30rem">
+      <th *ngIf="key3">
         <div class="flex align-items-center">
-          Email
+          {{keyDisplay3}}
           <p-columnFilter type="text" field="email" display="menu"></p-columnFilter>
         </div>
       </th>
-      <th style="width:15rem">
+      <th *ngIf="key4">
         <div class="flex align-items-center">
-          Country
+          {{keyDisplay4}}
           <p-columnFilter type="text" field="country" display="menu"></p-columnFilter>
+        </div>
+      </th>
+      <th *ngIf="key5">
+        <div class="flex align-items-center">
+          {{keyDisplay5}}
+          <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
+        </div>
+      </th>
+      <th *ngIf="key6">
+        <div class="flex align-items-center">
+          {{keyDisplay6}}
+          <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
         </div>
       </th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-customer>
-    <tr routerLink="/customer/{{customer.id}}">
-        <td>{{ customer.id }}</td>
-        <td>{{ customer.companyName }}</td>
-        <td>{{ customer.email }}</td>
-        <td>{{ customer.country }}</td>
+  <ng-template pTemplate="body" let-entity>
+    <tr routerLink="/customer/{{entity.id}}">
+        <td *ngIf="key1">{{ entity[key1] }}</td>
+        <td *ngIf="key2">{{ entity[key2] }}</td>
+        <td *ngIf="key3">{{ entity[key3] }}</td>
+        <td *ngIf="key4">{{ entity[key4] }}</td>
+        <td *ngIf="key5">{{ entity[key5] }}</td>
+        <td *ngIf="key6">{{ entity[key6] }}</td>
     </tr>
   </ng-template>
 </p-table>
