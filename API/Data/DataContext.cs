@@ -53,7 +53,8 @@ public class DataContext : IdentityDbContext<AppUser, AppRole, int,
             .HasOne(ps => ps.PaymentStatus);
 
         builder.Entity<Invoice>()
-            .HasOne(c => c.Customer);
+            .HasOne(i => i.Customer)
+            .WithMany(c => c.Invoices);
 
         builder.Entity<Order>()
             .HasMany(p => p.OrderedProducts);
