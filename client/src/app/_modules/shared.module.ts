@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import {ToastrModule} from "ngx-toastr";
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 import {TabsModule} from "ngx-bootstrap/tabs";
+import { TableModule } from 'primeng/table';
+
 
 @NgModule({
   declarations: [],
@@ -21,11 +23,13 @@ import {TabsModule} from "ngx-bootstrap/tabs";
     }),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
+    TableModule
   ],
   exports: [
     BsDropdownModule,
     ToastrModule,
-    TabsModule
+    TabsModule,
+    TableModule
   ]
 })
 export class SharedModule { }

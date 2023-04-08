@@ -14,6 +14,9 @@ import { InfoCustomerComponent } from './pages/customer/info/info-customer.compo
 import { IndexCustomerComponent } from './pages/customer/index/index-customer.component';
 import {NewCustomerComponent} from "./pages/customer/new/new-customer.component";
 import {ErrorInterceptor} from "./_interceptors/error.interceptor";
+import { DatatableComponent } from './pages/shared-components/datatable/datatable.component';
+import {ChipsModule} from "primeng/chips";
+import {ButtonModule} from "primeng/button";
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import {ErrorInterceptor} from "./_interceptors/error.interceptor";
     InfoCustomerComponent,
     IndexCustomerComponent,
     NewCustomerComponent,
+    DatatableComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,9 @@ import {ErrorInterceptor} from "./_interceptors/error.interceptor";
     BrowserAnimationsModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChipsModule,
+    ButtonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

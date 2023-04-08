@@ -36,8 +36,6 @@ export class InfoCustomerComponent {
     })
   }
 
-  //FIXME - Reactive forms : on submit, I get a type error that says that "Cannot read property of null (reading 'companyName')
-  // even though companyName is not null
   initializeForm() {
     this.customerForm = this.fb.group({
       id: [this.customer?.id],
@@ -55,16 +53,14 @@ export class InfoCustomerComponent {
       comments: [this.customer?.comments ?? '', Validators.required],
       shippingAddress: [this.customer?.shippingAddress ?? '', Validators.required],
     })
+    this.disableForm();
   }
 
   triggerEdit() {
     if(this.canEdit === false){
-      //modal appear and alert for loss of changes
-      // if accept
-      // disable inputs and reset data to original
-      // else
-      // don't disable inputs
-      // break; to exit without changing the edit
+      this.enableForm()
+    } else {
+      this.disableForm()
     }
     this.canEdit = !this.canEdit
   }
@@ -82,7 +78,7 @@ export class InfoCustomerComponent {
   getCustomer(id: string) {
     this.customerService.getCustomer(id).subscribe({
       next: response => {
-        this.customer = response;
+        this.customer = response
         this.initializeForm()
       }
     })
@@ -90,13 +86,49 @@ export class InfoCustomerComponent {
 
   updateCustomer(){
     this.customerService.updateCustomer(this.customerForm.value).subscribe({
-      next: (response: any) => {
-        this.toastr.success('Customer "' + response.companyName.toString() + '" updated');
+      next: () => {
+        this.toastr.success('Customer "' + this.customer?.companyName + '" updated')
+        this.triggerEdit()
       },
       error: (err: any) => {
-        console.log(err);
-        this.toastr.error(err.message);
+        console.log(err)
+        this.toastr.error(err.message)
       }
     })
   }
+
+  disableForm() {
+    this.customerForm.get('companyName')?.disable()
+    this.customerForm.get('contactPerson')?.disable()
+    this.customerForm.get('taxId')?.disable()
+    this.customerForm.get('telephone')?.disable()
+    this.customerForm.get('mobile')?.disable()
+    this.customerForm.get('email')?.disable()
+    this.customerForm.get('address')?.disable()
+    this.customerForm.get('city')?.disable()
+    this.customerForm.get('state')?.disable()
+    this.customerForm.get('country')?.disable()
+    this.customerForm.get('zip')?.disable()
+    this.customerForm.get('shippingAddress')?.disable()
+    this.customerForm.get('comments')?.disable()
+    this.customerForm.get('')?.disable()
+  }
+
+  enableForm() {
+    this.customerForm.get('companyName')?.enable()
+    this.customerForm.get('contactPerson')?.enable()
+    this.customerForm.get('taxId')?.enable()
+    this.customerForm.get('telephone')?.enable()
+    this.customerForm.get('mobile')?.enable()
+    this.customerForm.get('email')?.enable()
+    this.customerForm.get('address')?.enable()
+    this.customerForm.get('city')?.enable()
+    this.customerForm.get('state')?.enable()
+    this.customerForm.get('country')?.enable()
+    this.customerForm.get('zip')?.enable()
+    this.customerForm.get('shippingAddress')?.enable()
+    this.customerForm.get('comments')?.enable()
+    this.customerForm.get('')?.enable()
+  }
+
 }
