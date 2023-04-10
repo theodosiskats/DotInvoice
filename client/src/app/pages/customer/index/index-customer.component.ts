@@ -21,7 +21,6 @@ export class IndexCustomerComponent {
     this.customerService.getAllCustomers().subscribe({
       next: response => {
         this.customers = response
-        console.log(this.customers)
       },
       error: error => {
         console.error('Error fetching customers:', error)

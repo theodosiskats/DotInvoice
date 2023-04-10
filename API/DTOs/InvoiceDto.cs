@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using API.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace API.Entities;
+namespace API.DTO;
 
-public class Invoice
+public class InvoiceDto
 {
     public int Id { get; set; }
     public int InvoiceNumber { get; set; }

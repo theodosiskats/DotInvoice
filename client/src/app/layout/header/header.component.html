@@ -19,7 +19,6 @@
             Customers
           </a>
 
-
           <ul id="dropdown-customer" *dropdownMenu class="dropdown-menu"
               role="menu" aria-labelledby="button-basic">
             <li role="menuitem">
@@ -43,8 +42,82 @@
               </a>
             </li>
 
+          </ul>
+        </div>
+
+        <div class="btn-group" dropdown>
+          <a class="nav-link dropdown-toggle" dropdownToggle role="button" aria-controls="dropdown-invoice">
+            Invoices
+          </a>
+
+          <ul id="dropdown-invoice" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-basic">
+            <li role="menuitem">
+              <a routerLink="/invoice" class="dropdown-item">
+                <strong class="d-block">All</strong>
+                <small>View all invoices table</small>
+              </a>
+            </li>
             <li class="divider dropdown-divider"></li>
-            <li role="menuitem"><a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+            <li role="menuitem">
+              <a routerLink="/invoice/new" class="dropdown-item">
+                <strong class="d-block">Create invoice</strong>
+                <small>Create a new Invoice</small>
+              </a>
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem">
+              <a routerLink="/invoice/info" class="dropdown-item">
+                <strong class="d-block">Another product</strong>
+                <small>Explore this other product we offer</small>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="btn-group" dropdown>
+          <a class="nav-link dropdown-toggle" dropdownToggle role="button" aria-controls="dropdown-stock">
+            Stock
+          </a>
+
+          <ul id="dropdown-stock" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-basic">
+            <li role="menuitem">
+              <a routerLink="/invoice" class="dropdown-item">
+                <strong class="d-block">All</strong>
+                <small>View stock table</small>
+              </a>
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem">
+              <a routerLink="/invoice/new" class="dropdown-item">
+                <strong class="d-block">Add stock</strong>
+                <small>Create a new Invoice</small>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="btn-group" dropdown>
+          <a class="nav-link dropdown-toggle" dropdownToggle role="button" aria-controls="dropdown-products">
+            Products
+          </a>
+
+          <ul id="dropdown-products" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-basic">
+            <li role="menuitem">
+              <a routerLink="/invoice" class="dropdown-item">
+                <strong class="d-block">All</strong>
+                <small>View all products table</small>
+              </a>
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem">
+              <a routerLink="/invoice/new" class="dropdown-item">
+                <strong class="d-block">Create product</strong>
+                <small>Create a new product</small>
+              </a>
             </li>
           </ul>
         </div>

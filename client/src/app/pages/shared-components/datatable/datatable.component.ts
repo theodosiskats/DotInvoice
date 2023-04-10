@@ -21,7 +21,7 @@ export class DatatableComponent {
   @Input() keyDisplay4: string = ''
   @Input() keyDisplay5: string = ''
   @Input() keyDisplay6: string = ''
-  
+
   clear(table: Table) {
     table.clear();
   }

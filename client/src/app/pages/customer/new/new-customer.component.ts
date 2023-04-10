@@ -3,7 +3,7 @@ import {countriesList} from "../../../staticObjects/countriesList";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomerService} from "../../../_services/customer.service";
 import {Router} from "@angular/router";
-import {NewCustomer} from "../../../_models/newCustomer";
+import {Customer} from "../../../_models/customer";
 import {ToastrService} from "ngx-toastr";
 
 @Component({
@@ -15,7 +15,7 @@ export class NewCustomerComponent{
   validationErrors: string[] | undefined
   countries: string[] = [...countriesList]
   newCustomerForm: FormGroup = new FormGroup({})
-  customer: NewCustomer | undefined
+  customer: Customer | undefined
 
   constructor(private customerService: CustomerService, private fb: FormBuilder, private router: Router, private toastr: ToastrService) { }
 

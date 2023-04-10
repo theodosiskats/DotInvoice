@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {env} from "../../environments/environment";
 import {Customer} from "../_models/customer";
-import {NewCustomer} from "../_models/newCustomer";
 import {Router} from "@angular/router";
-import {map} from "rxjs";
 
 @Injectable({
   providedIn: 'root'

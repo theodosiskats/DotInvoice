@@ -17,6 +17,11 @@ import {ErrorInterceptor} from "./_interceptors/error.interceptor";
 import { DatatableComponent } from './pages/shared-components/datatable/datatable.component';
 import {ChipsModule} from "primeng/chips";
 import {ButtonModule} from "primeng/button";
+import { NewInvoiceComponent } from './pages/invoices/new-invoice/new-invoice.component';
+import { InfoInvoiceComponent } from './pages/invoices/info-invoice/info-invoice.component';
+import { IndexInvoiceComponent } from './pages/invoices/index-invoice/index-invoice.component';
+import { InvoiceTemplateComponent } from './pages/invoices/invoice-template/invoice-template.component';
+import { FiltersComponent } from './pages/shared-components/filters/filters.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +33,11 @@ import {ButtonModule} from "primeng/button";
     IndexCustomerComponent,
     NewCustomerComponent,
     DatatableComponent,
+    NewInvoiceComponent,
+    InfoInvoiceComponent,
+    IndexInvoiceComponent,
+    InvoiceTemplateComponent,
+    FiltersComponent,
   ],
   imports: [
     BrowserModule,
