@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ToastrModule} from "ngx-toastr";
-import {BsDropdownModule} from "ngx-bootstrap/dropdown";
-import {TabsModule} from "ngx-bootstrap/tabs";
+import { ToastrModule } from "ngx-toastr";
+import { BsDropdownModule } from "ngx-bootstrap/dropdown";
+import { TabsModule } from "ngx-bootstrap/tabs";
 import { TableModule } from 'primeng/table';
+import { TypeaheadModule } from "ngx-bootstrap/typeahead";
 
 
 @NgModule({
@@ -23,12 +24,14 @@ import { TableModule } from 'primeng/table';
     }),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
+    TypeaheadModule.forRoot(),
     TableModule
   ],
   exports: [
     BsDropdownModule,
     ToastrModule,
     TabsModule,
+    TypeaheadModule,
     TableModule
   ]
 })

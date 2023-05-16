@@ -1,6 +1,6 @@
 <form #invoiceForm="ngForm">
   <ng-container *ngIf="customerList.length > 0">
-    <app-filters #filters [items]="customerList"></app-filters>
+
   </ng-container><br><br><br>
         <div class="card border-secondary">
           <div class="card-body">
@@ -9,9 +9,9 @@
               <div class="col-md-8">
                 <div class="form-group">
                   <label for="company">Company</label>
-                  <select name="company" id="company" class="form-select">
+                  <select name="company" id="company" class="form-select" [(ngModel)]="selectedCustomer">
                     <option selected hidden>Choose...</option>
-                    <option *ngFor="let customer of customerList" [value]="customer">{{customer.companyName}}</option>
+                    <option *ngFor="let customer of customerList" [ngValue]="customer">{{customer.companyName}}</option>
                   </select>
                 </div>
 
@@ -23,10 +23,10 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="email">Email ID</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
+                  <input type="email" class="form-control" name="email" id="email" [value]="selectedCustomer?.email" disabled>
                 </div>
                 <div class="form-group">
-                  <label for="contactNo">Contact No.</label>
+                  <label for="contactNo">Phone Number</label>
                   <input type="number" class="form-control" name="contactNo" id="contactNo" required>
                 </div>
               </div>
@@ -50,20 +50,17 @@
                 <tbody>
                 <tr *ngFor="let product of productsInvoiced; let i=index">
                   <td>
-                    <input type="text" class="form-control" name="productName{{i}}" required>
+                    <input type="text" class="form-control" name="productName{{i}}" [(ngModel)]="product.name" required>
                   </td>
                   <td>
-                    <input type="number" class="form-control" name="price{{i}}" id="price" required>
+                    <input type="number" class="form-control" name="price{{i}}" [(ngModel)]="product.price" required (ngModelChange)="calculateTotal(i)">
                   </td>
                   <td>
-                    <input type="number" class="form-control" name="quantity{{i}}" id="quantity" required>
+                    <input type="number" class="form-control" name="quantity{{i}}" [(ngModel)]="product.qty" required (ngModelChange)="calculateTotal(i)">
                   </td>
                   <td class="text-end">
-                    <input
-                      disabled
-                      value="{{10 * 20 + '€' || ''}}"
-                      >
-                    <button class="btn fa fa-remove" (click)="deleteProduct()"></button>
+                    <input disabled value="{{ calculateTotal(i) + '€' || '' }}">
+                    <button class="btn fa fa-remove" (click)="removeProduct()"></button>
                   </td>
                 </tr>
                 </tbody>
